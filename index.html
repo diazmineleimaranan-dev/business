@@ -6,8 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Brew & Bloom Coffee Shop</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -22,7 +20,6 @@
       --brown: #573d2b;
       --dark: #30251f;
       --green: #697653;
-      --light-brown: #b68a64;
       --white: #fffdf9;
     }
 
@@ -30,30 +27,28 @@
       font-family: 'DM Sans', sans-serif;
       background: var(--cream);
       color: var(--dark);
-      overflow: hidden;
-    }
-
-    h1, h2, h3 {
-      font-family: 'Playfair Display', serif;
     }
 
     header {
-      height: 76px;
-      padding: 0 7%;
+      min-height: 76px;
+      padding: 15px 6%;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
       background: var(--white);
-      box-shadow: 0 2px 12px rgba(48, 37, 31, 0.08);
-      position: relative;
+      box-shadow: 0 2px 12px #30251f12;
+      position: sticky;
+      top: 0;
       z-index: 10;
     }
 
     .logo {
-      color: var(--brown);
       font-family: 'Playfair Display', serif;
-      font-size: 23px;
+      font-size: 24px;
       font-weight: 700;
+      color: var(--brown);
     }
 
     .logo span {
@@ -62,39 +57,30 @@
 
     nav {
       display: flex;
-      gap: 22px;
+      flex-wrap: wrap;
+      gap: 18px;
     }
 
     nav button {
-      border: none;
       background: none;
-      color: var(--dark);
+      border: none;
       font: inherit;
-      font-size: 14px;
       cursor: pointer;
       padding: 8px 0;
-      transition: color 0.3s;
+      color: var(--dark);
     }
 
-    nav button:hover,
-    nav button.active {
+    nav button.active,
+    nav button:hover {
       color: var(--green);
       font-weight: 700;
     }
 
-    main {
-      height: calc(100vh - 76px);
-      position: relative;
-      overflow: hidden;
-    }
-
     .slide {
       display: none;
-      height: 100%;
-      width: 100%;
-      padding: 40px 7%;
-      overflow-y: auto;
-      animation: fadeIn 0.5s ease;
+      min-height: calc(100vh - 76px);
+      padding: 55px 7% 80px;
+      animation: fadeIn .35s ease;
     }
 
     .slide.active {
@@ -104,40 +90,37 @@
     }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(8px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .eyebrow {
-      color: var(--green);
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 12px;
-      font-weight: 700;
-      margin-bottom: 14px;
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--brown);
     }
 
     h1 {
-      font-size: clamp(38px, 5vw, 68px);
-      line-height: 1.12;
-      color: var(--brown);
+      font-size: clamp(40px, 6vw, 70px);
+      line-height: 1.15;
       margin-bottom: 20px;
     }
 
     h2 {
-      color: var(--brown);
-      font-size: clamp(28px, 3vw, 40px);
-      margin-bottom: 14px;
+      font-size: clamp(28px, 4vw, 42px);
+      margin-bottom: 15px;
     }
 
     p {
       line-height: 1.8;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--green);
+      font-size: 12px;
+      font-weight: 700;
+      margin-bottom: 14px;
     }
 
     .btn {
@@ -146,23 +129,21 @@
       color: white;
       border: none;
       border-radius: 30px;
-      padding: 13px 25px;
-      font-size: 14px;
-      font-weight: 600;
+      padding: 13px 24px;
       cursor: pointer;
+      font: inherit;
+      font-weight: 600;
       text-decoration: none;
-      transition: background 0.3s, transform 0.3s;
     }
 
     .btn:hover {
       background: var(--brown);
-      transform: translateY(-2px);
     }
 
     /* HOME */
     #home {
       background:
-        linear-gradient(90deg, rgba(248,242,232,0.96), rgba(248,242,232,0.70)),
+        linear-gradient(90deg, #f8f2e8f5, #f8f2e8a8),
         url('https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1600&q=85') center/cover;
     }
 
@@ -171,32 +152,31 @@
     }
 
     .home-content p {
-      max-width: 520px;
-      margin-bottom: 28px;
-      font-size: 16px;
+      margin-bottom: 25px;
+      max-width: 530px;
     }
 
     /* ABOUT */
     .about-content {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 45px;
+      gap: 40px;
       align-items: center;
+    }
+
+    .about-content p {
+      margin-bottom: 14px;
     }
 
     .about-content img {
       width: 100%;
-      height: 350px;
+      height: 340px;
       object-fit: cover;
-      border-radius: 18px;
-    }
-
-    .about-content p {
-      margin-bottom: 15px;
+      border-radius: 16px;
     }
 
     /* MENU */
-    #menu {
+    #menu, #gallery {
       text-align: center;
     }
 
@@ -204,74 +184,58 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 22px;
-      margin-top: 22px;
+      margin-top: 25px;
     }
 
     .menu-card {
       background: var(--white);
-      border-radius: 16px;
+      border-radius: 15px;
       overflow: hidden;
-      box-shadow: 0 5px 20px rgba(48, 37, 31, 0.08);
-      transition: transform 0.3s;
-    }
-
-    .menu-card:hover {
-      transform: translateY(-5px);
+      box-shadow: 0 5px 18px #30251f12;
     }
 
     .menu-card img {
       width: 100%;
-      height: 155px;
+      height: 180px;
       object-fit: cover;
     }
 
     .menu-info {
-      padding: 15px;
+      padding: 18px;
     }
 
     .menu-info h3 {
-      color: var(--brown);
-      margin-bottom: 7px;
-      font-size: 20px;
+      font-size: 21px;
+      margin-bottom: 8px;
     }
 
     .menu-info p {
-      font-size: 13px;
-      color: #76685d;
+      font-size: 14px;
     }
 
     .price {
       display: block;
-      margin-top: 9px;
-      color: var(--green);
+      margin-top: 10px;
       font-weight: 700;
+      color: var(--green);
     }
 
     /* GALLERY */
-    #gallery {
-      text-align: center;
-    }
-
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
-      margin-top: 20px;
+      gap: 16px;
+      margin-top: 25px;
     }
 
     .gallery-grid img {
       width: 100%;
-      height: 190px;
+      height: 200px;
       object-fit: cover;
       border-radius: 14px;
-      transition: transform 0.3s;
     }
 
-    .gallery-grid img:hover {
-      transform: scale(1.03);
-    }
-
-    /* CONTACT AND BUSINESS OWNER PHOTO */
+    /* CONTACT */
     #contact {
       background: var(--cream);
     }
@@ -279,99 +243,83 @@
     .contact-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 35px;
       align-items: center;
+      gap: 40px;
+      max-width: 1100px;
       width: 100%;
-      max-width: 1050px;
-      margin: 0 auto;
-    }
-
-    .contact-form,
-    .owner-photo {
-      min-width: 0;
-      width: 100%;
+      margin: auto;
     }
 
     .contact-form > p {
-      margin-bottom: 18px;
+      margin-bottom: 20px;
       color: #76685d;
     }
 
     #contact-form {
       display: flex;
       flex-direction: column;
-      gap: 13px;
+      gap: 14px;
     }
 
     #contact-form input,
     #contact-form textarea {
       width: 100%;
-      padding: 13px 15px;
+      padding: 14px;
       border: 1px solid #dfd2c3;
       border-radius: 9px;
       background: var(--white);
-      font-family: inherit;
+      font: inherit;
       font-size: 14px;
-      outline: none;
-    }
-
-    #contact-form input:focus,
-    #contact-form textarea:focus {
-      border-color: var(--green);
     }
 
     #contact-form textarea {
-      min-height: 105px;
+      min-height: 110px;
       resize: vertical;
     }
 
-    #contact-form .btn {
-      align-self: flex-start;
-    }
-
     #form-message {
-      font-size: 14px;
       color: var(--green);
-      margin-top: 5px;
+      font-size: 14px;
     }
 
+    /* OWNER PHOTO */
     .owner-photo {
       text-align: center;
+      padding: 22px;
       background: var(--white);
-      padding: 20px;
       border-radius: 18px;
-      box-shadow: 0 5px 20px rgba(48, 37, 31, 0.08);
+      box-shadow: 0 5px 20px #30251f12;
     }
 
     .owner-photo h2 {
-      font-size: 28px;
-      margin-bottom: 16px;
+      font-size: 30px;
+      margin-bottom: 18px;
     }
 
     .owner-photo img {
       display: block;
       width: 100%;
-      height: 280px;
+      height: 300px;
       object-fit: cover;
       object-position: center;
       border-radius: 12px;
     }
 
     .owner-photo p {
-      margin-top: 12px;
+      margin-top: 14px;
       color: #76685d;
-      font-size: 13px;
+      font-size: 14px;
     }
 
-    /* SLIDE NAVIGATION */
+    /* NAVIGATION */
     .slide-controls {
       position: fixed;
-      bottom: 18px;
+      bottom: 15px;
       left: 0;
       right: 0;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       gap: 15px;
       z-index: 20;
       pointer-events: none;
@@ -383,25 +331,24 @@
     }
 
     .slide-controls > button {
-      background: var(--brown);
-      color: white;
+      width: 36px;
+      height: 36px;
       border: none;
       border-radius: 50%;
-      width: 35px;
-      height: 35px;
+      color: white;
+      background: var(--brown);
+      font-size: 18px;
       cursor: pointer;
-      font-size: 17px;
     }
 
     .dots {
       display: flex;
       gap: 8px;
-      align-items: center;
     }
 
     .dot {
-      width: 9px;
-      height: 9px;
+      width: 10px;
+      height: 10px;
       border: none;
       border-radius: 50%;
       background: #cbbba9;
@@ -410,63 +357,49 @@
 
     .dot.active {
       background: var(--green);
-      transform: scale(1.25);
     }
 
     @media (max-width: 768px) {
       header {
-        height: auto;
-        min-height: 76px;
-        padding: 15px 5%;
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .logo {
-        font-size: 21px;
-      }
-
-      nav {
-        gap: 13px;
-        flex-wrap: wrap;
         justify-content: center;
       }
 
-      nav button {
-        font-size: 12px;
+      nav {
+        justify-content: center;
+        gap: 13px;
       }
 
-      main {
-        height: calc(100vh - 105px);
+      nav button {
+        font-size: 13px;
       }
 
       .slide {
-        padding: 28px 5% 65px;
+        padding: 35px 5% 75px;
       }
 
-      .about-content {
+      .about-content,
+      .contact-container {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 25px;
       }
 
       .about-content img {
-        height: 220px;
+        height: 230px;
       }
 
       .menu-grid {
         grid-template-columns: 1fr;
-        gap: 15px;
       }
 
       .menu-card {
         display: grid;
-        grid-template-columns: 110px 1fr;
+        grid-template-columns: 115px 1fr;
         text-align: left;
       }
 
       .menu-card img {
         height: 100%;
-        min-height: 120px;
+        min-height: 140px;
       }
 
       .gallery-grid {
@@ -474,28 +407,11 @@
       }
 
       .gallery-grid img {
-        height: 135px;
-      }
-
-      .contact-container {
-        grid-template-columns: 1fr;
-        gap: 22px;
-      }
-
-      .owner-photo {
-        padding: 15px;
-      }
-
-      .owner-photo h2 {
-        font-size: 25px;
+        height: 140px;
       }
 
       .owner-photo img {
-        height: 220px;
-      }
-
-      .slide-controls {
-        bottom: 10px;
+        height: 250px;
       }
     }
   </style>
@@ -516,7 +432,7 @@
   </header>
 
   <main>
-    <!-- SLIDE 1: HOME -->
+    <!-- HOME -->
     <section class="slide active" id="home">
       <div class="home-content">
         <div class="eyebrow">Coffee • Comfort • Connection</div>
@@ -530,16 +446,15 @@
       </div>
     </section>
 
-    <!-- SLIDE 2: ABOUT -->
+    <!-- ABOUT -->
     <section class="slide" id="about">
       <div class="about-content">
         <div>
           <div class="eyebrow">Our Story</div>
           <h2>A Little Place to Feel at Home</h2>
           <p>
-            Brew & Bloom Coffee Shop is a cozy place created for people
-            who love good coffee, relaxing moments, and meaningful
-            conversations.
+            Brew & Bloom Coffee Shop is a cozy place for people who love
+            good coffee, relaxing moments, and meaningful conversations.
           </p>
           <p>
             Whether you're catching up with friends, studying, or taking
@@ -553,12 +468,11 @@
 
         <img
           src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=900&q=85"
-          alt="Cozy coffee shop interior"
-        >
+          alt="Cozy coffee shop interior">
       </div>
     </section>
 
-    <!-- SLIDE 3: MENU -->
+    <!-- MENU -->
     <section class="slide" id="menu">
       <div class="eyebrow">Made with Love</div>
       <h2>Our Favorites</h2>
@@ -566,10 +480,7 @@
 
       <div class="menu-grid">
         <div class="menu-card">
-          <img
-            src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=600&q=80"
-            alt="Iced coffee"
-          >
+          <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=600&q=80" alt="Iced coffee">
           <div class="menu-info">
             <h3>Iced Coffee</h3>
             <p>Refreshing coffee with a smooth finish.</p>
@@ -578,10 +489,7 @@
         </div>
 
         <div class="menu-card">
-          <img
-            src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=600&q=80"
-            alt="Latte"
-          >
+          <img src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=600&q=80" alt="Latte">
           <div class="menu-info">
             <h3>Creamy Latte</h3>
             <p>Espresso blended with steamed milk.</p>
@@ -590,10 +498,7 @@
         </div>
 
         <div class="menu-card">
-          <img
-            src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=600&q=80"
-            alt="Coffee and pastry"
-          >
+          <img src="https://images.unsplash.com/photo-1517701604599-bb29b565090c?auto=format&fit=crop&w=600&q=80" alt="Coffee and pastry">
           <div class="menu-info">
             <h3>Coffee & Pastry</h3>
             <p>A comforting pair for your coffee break.</p>
@@ -603,96 +508,61 @@
       </div>
     </section>
 
-    <!-- SLIDE 4: GALLERY -->
+    <!-- GALLERY -->
     <section class="slide" id="gallery">
       <div class="eyebrow">A Glimpse of Our Café</div>
       <h2>Our Gallery</h2>
       <p>Good coffee and cozy moments.</p>
 
       <div class="gallery-grid">
-        <img
-          src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=700&q=80"
-          alt="Coffee shop interior"
-        >
-        <img
-          src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=700&q=80"
-          alt="Coffee shop seating"
-        >
-        <img
-          src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=700&q=80"
-          alt="Freshly brewed coffee"
-        >
-        <img
-          src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=700&q=80"
-          alt="Cup of coffee"
-        >
-        <img
-          src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=700&q=80"
-          alt="Coffee being prepared"
-        >
+        <img src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=700&q=80" alt="Coffee shop interior">
+        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=700&q=80" alt="Coffee shop seating">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=700&q=80" alt="Freshly brewed coffee">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=700&q=80" alt="Cup of coffee">
+        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=700&q=80" alt="Coffee preparation">
       </div>
     </section>
 
-    <!-- SLIDE 5: CONTACT -->
+    <!-- CONTACT -->
     <section class="slide" id="contact">
       <div class="contact-container">
 
-        <!-- CONTACT FORM -->
         <div class="contact-form">
           <div class="eyebrow">Say Hello</div>
           <h2>Contact Us</h2>
-          <p>
-            Have a question or want to know more? Send us a message!
-          </p>
+          <p>Have a question? Send us a message!</p>
 
           <form id="contact-form">
-            <input
-              type="text"
-              id="name"
-              placeholder="Your Name"
-              required
-            >
-
-            <input
-              type="email"
-              id="email"
-              placeholder="Your Email"
-              required
-            >
-
-            <textarea
-              id="message"
-              placeholder="Your Message"
-              required
-            ></textarea>
-
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" placeholder="Your Message" required></textarea>
             <button type="submit" class="btn">Send Message</button>
             <p id="form-message" aria-live="polite"></p>
           </form>
         </div>
 
-        <!-- ONE DOCUMENTATION PHOTO WITH THE OWNER -->
         <div class="owner-photo">
           <div class="eyebrow">Our Business Partner</div>
           <h2>Meet the Owner</h2>
 
+          <!-- The image is in the same folder as index.html -->
           <img
-            src="images/business-owner.jpeg"
-            alt="Project members together with the business owner"
+            src="./business-owner.jpeg"
+            alt="Our team with the business owner"
+            onerror="this.onerror=null; this.alt='Picture could not be loaded. Check the image filename.'; this.style.border='2px dashed #697653';"
           >
 
-          <p>
-            Our team with the owner of Brew & Bloom Coffee Shop.
-          </p>
+          <p>Our team with the owner of Brew & Bloom Coffee Shop.</p>
         </div>
 
       </div>
     </section>
   </main>
 
-  <!-- SLIDE NAVIGATION -->
+  <!-- SLIDE CONTROLS -->
   <div class="slide-controls">
     <button id="prev-btn" aria-label="Previous slide">&#8592;</button>
+
     <div class="dots">
       <button class="dot active" data-slide="0" aria-label="Home"></button>
       <button class="dot" data-slide="1" aria-label="About"></button>
@@ -700,6 +570,7 @@
       <button class="dot" data-slide="3" aria-label="Gallery"></button>
       <button class="dot" data-slide="4" aria-label="Contact"></button>
     </div>
+
     <button id="next-btn" aria-label="Next slide">&#8594;</button>
   </div>
 
@@ -707,7 +578,6 @@
     const slides = document.querySelectorAll('.slide');
     const navButtons = document.querySelectorAll('.nav-btn');
     const dots = document.querySelectorAll('.dot');
-
     let currentSlide = 0;
 
     function goToSlide(index) {
@@ -758,13 +628,10 @@
       }
     });
 
-    // Demo contact form: displays a message but does not send email.
     document.getElementById('contact-form').addEventListener('submit', event => {
       event.preventDefault();
-
       document.getElementById('form-message').textContent =
         'Thank you! Your message has been recorded for this demo.';
-
       event.target.reset();
     });
   </script>
