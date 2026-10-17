@@ -7,6 +7,15 @@
   <title>Brew & Bloom Coffee Shop</title>
 
   <style>
+    :root {
+      --cream: #f7f3e9;
+      --white: #fffdf9;
+      --brown: #543727;
+      --green: #6d7956;
+      --text: #76685e;
+      --tan: #d4c2b1;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -16,330 +25,334 @@
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: #faf6f0;
-      color: #3e2a20;
-      line-height: 1.6;
+      background: var(--cream);
+      color: var(--brown);
     }
 
     header {
-      background: #3e2a20;
-      color: #fffaf4;
-      padding: 16px 7%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 10;
+      background: rgba(255, 253, 249, 0.97);
+      padding: 22px 16px;
+      text-align: center;
+      box-shadow: 0 3px 15px rgba(70, 50, 35, 0.06);
     }
 
     .logo {
-      font-size: 23px;
+      font-family: Georgia, serif;
+      font-size: clamp(28px, 5vw, 43px);
       font-weight: bold;
-      letter-spacing: 1px;
+      margin-bottom: 20px;
     }
 
     nav {
       display: flex;
+      justify-content: center;
       flex-wrap: wrap;
-      gap: 20px;
+      gap: 22px;
     }
 
     nav a {
-      color: #fffaf4;
       text-decoration: none;
-      font-size: 14px;
-      transition: color 0.3s;
+      color: #352b25;
+      font-size: 15px;
+      padding-bottom: 5px;
     }
 
-    nav a:hover {
-      color: #d9b58c;
+    nav a:hover,
+    nav a.active {
+      color: var(--green);
+      font-weight: bold;
     }
 
-    section {
-      scroll-margin-top: 85px;
+    .page {
+      display: none;
+      min-height: 65vh;
+      padding: 45px 5% 35px;
+      animation: fadeIn 0.35s ease;
     }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: clamp(25px, 5vw, 55px);
+      background: var(--white);
+      border-radius: 28px;
+      box-shadow: 0 10px 35px rgba(80, 60, 40, 0.07);
+      text-align: center;
+    }
+
+    .eyebrow {
+      color: var(--green);
+      font-size: 13px;
+      letter-spacing: 4px;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    h1, h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: clamp(38px, 7vw, 62px);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: clamp(32px, 5vw, 46px);
+      margin-bottom: 18px;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+    }
+
+    .description {
+      max-width: 650px;
+      margin: 0 auto 25px;
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.9;
+    }
+
+    .button {
+      display: inline-block;
+      border: none;
+      border-radius: 30px;
+      background: var(--green);
+      color: white;
+      text-decoration: none;
+      padding: 14px 28px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+
+    .button:hover {
+      background: var(--brown);
+      transform: translateY(-2px);
+    }
+
+    /* HOME */
 
     .hero {
-      min-height: 520px;
-      padding: 80px 8%;
+      min-height: 480px;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 60px 20px;
       text-align: center;
-      background:
-        linear-gradient(rgba(35, 22, 15, 0.58),
-                        rgba(35, 22, 15, 0.58)),
-        url("https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1600&q=80");
-      background-position: center;
-      background-size: cover;
       color: white;
+      background:
+        linear-gradient(rgba(45, 31, 22, 0.55),
+                        rgba(45, 31, 22, 0.55)),
+        url("https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=1600&q=80")
+        center/cover;
     }
 
     .hero-content {
-      max-width: 720px;
-    }
-
-    .hero h1 {
-      font-size: clamp(38px, 6vw, 62px);
-      margin-bottom: 15px;
-      line-height: 1.15;
+      max-width: 750px;
     }
 
     .hero p {
       font-size: 17px;
-      margin-bottom: 28px;
+      line-height: 1.8;
+      margin-bottom: 25px;
     }
 
-    .btn {
-      display: inline-block;
-      background: #c69a6b;
-      color: #2f2018;
-      padding: 12px 25px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      background: #e1c19b;
-      transform: translateY(-2px);
-    }
-
-    .section-heading {
-      text-align: center;
-      margin-bottom: 35px;
-    }
-
-    .section-heading p {
-      color: #9a7555;
-      text-transform: uppercase;
-      font-size: 12px;
-      font-weight: bold;
-      letter-spacing: 3px;
-      margin-bottom: 5px;
-    }
-
-    .section-heading h2 {
-      font-size: 34px;
-    }
-
-    .menu-section {
-      padding: 75px 7%;
-    }
-
-    .menu-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-      max-width: 1100px;
-      margin: auto;
-    }
-
-    .menu-card {
-      background: #fffdf9;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 5px 18px rgba(62, 42, 32, 0.09);
-      transition: transform 0.3s;
-    }
-
-    .menu-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .menu-card img {
-      width: 100%;
-      height: 190px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .menu-info {
-      padding: 20px;
-    }
-
-    .menu-info h3 {
-      margin-bottom: 7px;
-    }
-
-    .menu-info p {
-      color: #78675b;
-      font-size: 14px;
-    }
-
-    .price {
-      display: block;
-      margin-top: 12px;
-      color: #8b5e3c;
-      font-weight: bold;
-      font-size: 18px;
-    }
-
-    .about-section {
-      background: #f0e5d7;
-      padding: 75px 7%;
-      text-align: center;
-    }
-
-    .about-container {
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .about-label {
-      color: #9a7555;
-      font-size: 12px;
-      font-weight: bold;
-      letter-spacing: 3px;
-      margin-bottom: 8px;
-    }
-
-    .about-section h2 {
-      font-size: 34px;
-      margin-bottom: 10px;
-    }
+    /* ABOUT US */
 
     .about-tagline {
-      color: #8b5e3c;
-      font-size: 18px;
+      color: var(--green);
+      font-family: Georgia, serif;
+      font-size: 21px;
       font-style: italic;
       margin-bottom: 20px;
     }
 
-    .about-description {
-      max-width: 720px;
-      margin: 0 auto 35px;
-      color: #655044;
-      line-height: 1.9;
+    .values {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 18px;
+      margin-top: 30px;
     }
 
-    .developers-title {
-      margin-top: 35px;
+    .value-card {
+      background: var(--cream);
+      border-radius: 18px;
+      padding: 22px 16px;
     }
 
-    .developers-description {
-      color: #78675b;
-      margin: 10px 0 25px;
+    .value-card .emoji {
+      font-size: 30px;
+      margin-bottom: 10px;
     }
 
-    .developer-container {
-      display: flex;
-      justify-content: center;
-      gap: 25px;
-      flex-wrap: wrap;
+    .value-card p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text);
+    }
+
+    /* MENU AND GALLERY */
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 22px;
+      max-width: 1100px;
+      margin: 30px auto 0;
+    }
+
+    .item {
+      background: var(--white);
+      overflow: hidden;
+      border-radius: 20px;
+      box-shadow: 0 5px 18px rgba(80, 60, 40, 0.07);
+    }
+
+    .item img {
+      display: block;
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+    }
+
+    .item-info {
+      padding: 20px;
+    }
+
+    .item-info p {
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .price {
+      display: block;
+      margin-top: 10px;
+      color: var(--green);
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    /* OWNER */
+
+    .owner-photo {
+      width: 100%;
+      max-width: 560px;
+      height: auto;
+      max-height: 450px;
+      object-fit: cover;
+      border-radius: 20px;
+      margin: 15px auto 22px;
+      display: block;
+      background: var(--cream);
+    }
+
+    /* DEVELOPERS */
+
+    .developer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 22px;
+      max-width: 620px;
+      margin: 30px auto;
     }
 
     .developer-card {
-      background: #fffdf9;
-      padding: 28px 20px;
-      border-radius: 15px;
-      width: 270px;
-      box-shadow: 0 5px 18px rgba(62, 42, 32, 0.08);
+      background: var(--cream);
+      padding: 25px 18px;
+      border-radius: 20px;
     }
 
     .developer-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       width: 65px;
       height: 65px;
       margin: 0 auto 15px;
       border-radius: 50%;
-      background: #e8d5c0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: #e7d9c7;
       font-size: 30px;
     }
 
     .developer-card h3 {
       font-size: 17px;
-      margin-bottom: 5px;
     }
 
     .developer-card p {
-      color: #8b6d55;
+      color: var(--text);
       font-size: 14px;
-    }
-
-    .section-info {
-      margin-top: 30px;
-      font-weight: bold;
     }
 
     .school-info {
-      color: #78675b;
+      color: var(--text);
+      line-height: 1.8;
       font-size: 14px;
     }
 
-    .contact-section {
-      padding: 75px 7%;
-      background: #faf6f0;
-    }
+    /* CONTACT */
 
-    .contact-container {
+    .contact-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 35px;
-      max-width: 1050px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+      max-width: 950px;
       margin: auto;
-      align-items: start;
+      text-align: left;
     }
 
-    .contact-info h3,
-    .contact-form h3 {
-      font-size: 23px;
-      margin-bottom: 15px;
+    .contact-info,
+    .contact-form {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 25px;
     }
 
     .contact-info p {
-      color: #78675b;
-      margin-bottom: 12px;
+      margin: 12px 0;
+      color: var(--text);
       overflow-wrap: anywhere;
-    }
-
-    .documentation {
-      margin-top: 25px;
-    }
-
-    .documentation img {
-      display: block;
-      width: 100%;
-      max-width: 420px;
-      height: 280px;
-      object-fit: cover;
-      border-radius: 12px;
-      margin-top: 12px;
-      background: #e8d5c0;
-    }
-
-    .contact-form {
-      background: #fffdf9;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 5px 18px rgba(62, 42, 32, 0.08);
     }
 
     .contact-form label {
       display: block;
-      margin: 13px 0 5px;
-      font-weight: bold;
       font-size: 14px;
+      font-weight: bold;
+      margin: 14px 0 6px;
     }
 
     .contact-form input,
     .contact-form textarea {
       width: 100%;
-      padding: 12px;
-      border: 1px solid #d9c9b8;
-      border-radius: 8px;
+      padding: 13px;
+      font: inherit;
+      border: 1px solid #d9cbbb;
+      border-radius: 10px;
       background: #fff;
-      color: #3e2a20;
-      font-family: inherit;
-      font-size: 14px;
+      color: var(--brown);
     }
 
     .contact-form textarea {
@@ -347,54 +360,115 @@
       resize: vertical;
     }
 
-    .contact-form button {
-      margin-top: 18px;
+    .contact-form .button {
       width: 100%;
-      font-size: 15px;
+      margin-top: 18px;
+    }
+
+    #formMessage {
+      font-size: 14px;
+      margin-top: 12px;
+      color: var(--green);
+    }
+
+    /* SLIDE CONTROLS */
+
+    .slide-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 15px 35px;
+    }
+
+    .arrow {
+      border: none;
+      background: var(--brown);
+      color: white;
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      font-size: 27px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .arrow:hover {
+      background: var(--green);
+    }
+
+    .dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      margin: 0 5px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border: none;
+      border-radius: 50%;
+      background: #d0c0b1;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background: var(--green);
     }
 
     footer {
-      background: #3e2a20;
-      color: #fffaf4;
       text-align: center;
+      background: var(--brown);
+      color: #fffaf3;
       padding: 25px 15px;
-    }
-
-    footer p {
+      line-height: 1.8;
       font-size: 13px;
-      margin: 4px 0;
     }
 
-    footer .footer-title {
-      font-size: 19px;
-      font-weight: bold;
-      margin-bottom: 8px;
+    footer strong {
+      font-family: Georgia, serif;
+      font-size: 20px;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 500px) {
       header {
-        justify-content: center;
+        padding: 20px 10px;
       }
 
       nav {
-        justify-content: center;
-        gap: 13px;
+        gap: 15px;
+      }
+
+      nav a {
+        font-size: 14px;
+      }
+
+      .page {
+        padding: 28px 16px;
+      }
+
+      .card {
+        padding: 30px 20px;
       }
 
       .hero {
         min-height: 430px;
-        padding: 60px 20px;
       }
 
-      .section-heading h2,
-      .about-section h2 {
-        font-size: 28px;
+      .arrow {
+        width: 48px;
+        height: 48px;
       }
 
-      .menu-section,
-      .about-section,
-      .contact-section {
-        padding: 55px 20px;
+      .dot {
+        width: 10px;
+        height: 10px;
+      }
+
+      .dots {
+        gap: 7px;
       }
     }
   </style>
@@ -402,221 +476,345 @@
 
 <body>
 
-  <!-- NAVIGATION -->
+  <!-- HEADER AND NAVIGATION -->
   <header>
-    <div class="logo">☕ Brew &amp; Bloom</div>
+    <div class="logo">Brew &amp; Bloom</div>
 
     <nav>
-      <a href="#home">Home</a>
-      <a href="#menu">Menu</a>
-      <a href="#about">About Us</a>
-      <a href="#contact">Contact</a>
+      <a href="#home" data-page="home" class="active">Home</a>
+      <a href="#about" data-page="about">About</a>
+      <a href="#menu" data-page="menu">Menu</a>
+      <a href="#gallery" data-page="gallery">Gallery</a>
+      <a href="#contact" data-page="contact">Contact</a>
     </nav>
   </header>
 
-  <!-- HOME -->
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <h1>Welcome to Brew &amp; Bloom</h1>
-      <p>
-        Every cup tells a story. Enjoy freshly brewed coffee,
-        comforting flavors, and a cozy place to relax.
-      </p>
-      <a href="#menu" class="btn">Explore Our Menu</a>
-    </div>
-  </section>
+  <main>
 
-  <!-- MENU -->
-  <section class="menu-section" id="menu">
-    <div class="section-heading">
-      <p>Made with love</p>
-      <h2>Our Coffee Menu</h2>
-    </div>
-
-    <div class="menu-grid">
-
-      <div class="menu-card">
-        <img
-          src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=700&q=80"
-          alt="Iced coffee">
-        <div class="menu-info">
-          <h3>Iced Latte</h3>
-          <p>Smooth espresso with milk served over ice.</p>
-          <span class="price">₱120</span>
+    <!-- PAGE 1: HOME -->
+    <section class="page active" id="home">
+      <div class="hero">
+        <div class="hero-content">
+          <p class="eyebrow" style="color:#f0d8b9;">WELCOME TO</p>
+          <h1>Brew &amp; Bloom</h1>
+          <p>
+            A cozy corner for coffee lovers. Enjoy comforting
+            flavors, freshly brewed coffee, and a little moment
+            of happiness in every cup.
+          </p>
+          <button class="button" onclick="showPage('menu')">
+            Explore Our Menu
+          </button>
         </div>
       </div>
+    </section>
 
-      <div class="menu-card">
-        <img
-          src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=700&q=80"
-          alt="Hot coffee">
-        <div class="menu-info">
-          <h3>Café Americano</h3>
-          <p>Rich espresso balanced with hot water.</p>
-          <span class="price">₱100</span>
-        </div>
-      </div>
+    <!-- PAGE 2: ABOUT US -->
+    <section class="page" id="about">
+      <div class="card">
+        <p class="eyebrow">OUR STORY</p>
+        <h2>About Brew &amp; Bloom</h2>
+        <p class="about-tagline">A little warmth in every cup.</p>
 
-      <div class="menu-card">
-        <img
-          src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=700&q=80"
-          alt="Cappuccino">
-        <div class="menu-info">
-          <h3>Cappuccino</h3>
-          <p>Espresso topped with steamed milk and foam.</p>
-          <span class="price">₱130</span>
-        </div>
-      </div>
-
-      <div class="menu-card">
-        <img
-          src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=700&q=80"
-          alt="Chocolate coffee drink">
-        <div class="menu-info">
-          <h3>Mocha</h3>
-          <p>A delightful blend of espresso and chocolate.</p>
-          <span class="price">₱140</span>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ABOUT US -->
-  <section class="about-section" id="about">
-    <div class="about-container">
-
-      <p class="about-label">OUR STORY</p>
-      <h2>About Brew &amp; Bloom</h2>
-      <p class="about-tagline">A little warmth in every cup.</p>
-
-      <p class="about-description">
-        Brew &amp; Bloom Coffee Shop is a cozy coffee shop concept
-        created for coffee lovers who want to enjoy delicious
-        coffee and a relaxing atmosphere. Our website showcases
-        our coffee offerings and provides visitors with an easy
-        way to explore the menu and learn more about the shop.
-        We aim to present a welcoming online experience that
-        reflects the warmth and comfort of a neighborhood café.
-      </p>
-
-      <h2 class="developers-title">Meet the Developers</h2>
-
-      <p class="developers-description">
-        The students behind the Brew &amp; Bloom Coffee Shop website.
-      </p>
-
-      <div class="developer-container">
-
-        <div class="developer-card">
-          <div class="developer-icon">☕</div>
-          <h3>Diazmine Lei Maranan</h3>
-          <p>Student Developer</p>
-        </div>
-
-        <div class="developer-card">
-          <div class="developer-icon">☕</div>
-          <h3>Maris Palmes</h3>
-          <p>Student Developer</p>
-        </div>
-
-      </div>
-
-      <p class="section-info">BSIT 21004</p>
-      <p class="school-info">Bestlink College of the Philippines</p>
-
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="contact-section" id="contact">
-    <div class="section-heading">
-      <p>We'd love to hear from you</p>
-      <h2>Contact Us</h2>
-    </div>
-
-    <div class="contact-container">
-
-      <div class="contact-info">
-        <h3>Get in Touch</h3>
-
-        <p>
-          Have questions about our menu or coffee shop?
-          Send us a message using the form.
+        <p class="description">
+          Brew &amp; Bloom Coffee Shop is a cozy coffee shop concept
+          created for coffee lovers who want to enjoy delicious
+          coffee and a relaxing atmosphere. Our website introduces
+          visitors to our coffee offerings, highlights our menu,
+          and provides an easy way to learn more about the shop.
+          We believe that a good cup of coffee can make ordinary
+          moments feel special.
         </p>
 
-        <p><strong>Shop:</strong> Brew &amp; Bloom Coffee Shop</p>
-        <p><strong>Email:</strong> brewandbloom@example.com</p>
-        <p><strong>Hours:</strong> Monday – Saturday, 8:00 AM – 8:00 PM</p>
+        <div class="values">
+          <div class="value-card">
+            <div class="emoji">☕</div>
+            <h3>Quality Coffee</h3>
+            <p>A selection of coffee favorites for different tastes.</p>
+          </div>
 
-        <div class="documentation">
-          <h3>Project Documentation</h3>
-          <p>Our team with the business owner.</p>
+          <div class="value-card">
+            <div class="emoji">🌿</div>
+            <h3>Cozy Atmosphere</h3>
+            <p>A warm and welcoming coffee shop experience.</p>
+          </div>
 
-          <img
-            src="./business-owner.jpeg"
-            alt="Our team with the business owner"
-            onerror="this.onerror=null; this.src='https://placehold.co/600x400/e8d5c0/3e2a20?text=Upload+business-owner.jpeg';">
+          <div class="value-card">
+            <div class="emoji">🤎</div>
+            <h3>Made with Care</h3>
+            <p>Created to celebrate coffee, comfort, and connection.</p>
+          </div>
         </div>
       </div>
+    </section>
 
-      <form class="contact-form" id="contactForm">
-        <h3>Send Us a Message</h3>
+    <!-- PAGE 3: MENU -->
+    <section class="page" id="menu">
+      <div class="section-heading">
+        <p class="eyebrow">MADE WITH LOVE</p>
+        <h2>Our Coffee Menu</h2>
+        <p class="description">
+          Discover some of our featured coffee favorites.
+        </p>
+      </div>
 
-        <label for="name">Your Name</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          placeholder="Enter your name"
-          required>
+      <div class="grid">
+        <article class="item">
+          <img
+            src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=700&q=80"
+            alt="Iced latte">
+          <div class="item-info">
+            <h3>Iced Latte</h3>
+            <p>Smooth espresso and milk served over ice.</p>
+            <span class="price">₱120</span>
+          </div>
+        </article>
 
-        <label for="email">Your Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          placeholder="Enter your email"
-          required>
+        <article class="item">
+          <img
+            src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=700&q=80"
+            alt="Hot coffee">
+          <div class="item-info">
+            <h3>Café Americano</h3>
+            <p>A rich espresso flavor balanced with hot water.</p>
+            <span class="price">₱100</span>
+          </div>
+        </article>
 
-        <label for="message">Your Message</label>
-        <textarea
-          id="message"
-          name="message"
-          placeholder="Write your message here..."
-          required></textarea>
+        <article class="item">
+          <img
+            src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?auto=format&fit=crop&w=700&q=80"
+            alt="Cappuccino">
+          <div class="item-info">
+            <h3>Cappuccino</h3>
+            <p>Espresso topped with steamed milk and foam.</p>
+            <span class="price">₱130</span>
+          </div>
+        </article>
 
-        <button type="submit" class="btn">Send Message</button>
+        <article class="item">
+          <img
+            src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?auto=format&fit=crop&w=700&q=80"
+            alt="Mocha coffee">
+          <div class="item-info">
+            <h3>Mocha</h3>
+            <p>A delicious combination of coffee and chocolate.</p>
+            <span class="price">₱140</span>
+          </div>
+        </article>
+      </div>
+    </section>
 
-        <p id="formMessage" role="status" style="margin-top:12px;"></p>
-      </form>
+    <!-- PAGE 4: GALLERY -->
+    <section class="page" id="gallery">
+      <div class="section-heading">
+        <p class="eyebrow">A LOOK INSIDE</p>
+        <h2>Our Gallery</h2>
+        <p class="description">
+          A glimpse of coffee moments, cozy spaces, and café inspiration.
+        </p>
+      </div>
 
-    </div>
-  </section>
+      <div class="grid">
+        <article class="item">
+          <img
+            src="https://images.unsplash.com/photo-1445116572660-236099ec97a0?auto=format&fit=crop&w=700&q=80"
+            alt="Cozy coffee shop">
+          <div class="item-info">
+            <h3>Cozy Corners</h3>
+            <p>A welcoming space to pause and relax.</p>
+          </div>
+        </article>
+
+        <article class="item">
+          <img
+            src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=700&q=80"
+            alt="Coffee and coffee beans">
+          <div class="item-info">
+            <h3>Coffee Moments</h3>
+            <p>Little moments made better with coffee.</p>
+          </div>
+        </article>
+
+        <article class="item">
+          <img
+            src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=700&q=80"
+            alt="Coffee being prepared">
+          <div class="item-info">
+            <h3>Freshly Brewed</h3>
+            <p>Celebrating the art of coffee.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PAGE 5: CONTACT AND OWNER -->
+    <section class="page" id="contact">
+      <div class="section-heading">
+        <p class="eyebrow">WE'D LOVE TO HEAR FROM YOU</p>
+        <h2>Contact Us</h2>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Get in Touch</h3>
+          <p>
+            Have a question about our coffee shop or menu?
+            Feel free to send us a message.
+          </p>
+          <p><strong>Business:</strong><br>Brew &amp; Bloom Coffee Shop</p>
+          <p><strong>Email:</strong><br>brewandbloom@example.com</p>
+          <p><strong>Hours:</strong><br>Monday – Saturday, 8 AM – 8 PM</p>
+        </div>
+
+        <form class="contact-form" id="contactForm">
+          <h3>Send Message</h3>
+
+          <label for="name">Your Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Enter your name"
+            required>
+
+          <label for="email">Your Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Enter your email"
+            required>
+
+          <label for="message">Your Message</label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Write your message..."
+            required></textarea>
+
+          <button type="submit" class="button">Send Message</button>
+          <p id="formMessage" role="status"></p>
+        </form>
+      </div>
+
+      <!-- BUSINESS OWNER DOCUMENTATION -->
+      <div class="card" style="margin-top:40px;">
+        <p class="eyebrow">OUR BUSINESS PARTNER</p>
+        <h2>Meet the Owner</h2>
+
+        <img
+          class="owner-photo"
+          src="./business-owner.jpeg"
+          alt="Our team with the business owner"
+          onerror="this.onerror=null; this.src='https://placehold.co/600x400/e8d5c0/543727?text=Please+check+business-owner.jpeg';">
+
+        <p class="description">
+          Our team with the owner of Brew &amp; Bloom Coffee Shop.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- SLIDE NAVIGATION -->
+  <div class="slide-controls">
+    <button class="arrow" id="prevBtn" aria-label="Previous page">←</button>
+    <div class="dots" id="dots" aria-label="Choose page"></div>
+    <button class="arrow" id="nextBtn" aria-label="Next page">→</button>
+  </div>
 
   <!-- FOOTER -->
   <footer>
-    <p class="footer-title">☕ Brew &amp; Bloom Coffee Shop</p>
+    <strong>Brew &amp; Bloom</strong>
     <p>Designed and developed by</p>
     <p>Diazmine Lei Maranan &amp; Maris Palmes</p>
     <p>BSIT 21004 | Bestlink College of the Philippines</p>
-    <p>&copy; 2026 Brew &amp; Bloom. All rights reserved.</p>
+    <p>© 2026 Brew &amp; Bloom Coffee Shop</p>
   </footer>
 
   <script>
-    const contactForm = document.getElementById("contactForm");
-    const formMessage = document.getElementById("formMessage");
+    const pageNames = ["home", "about", "menu", "gallery", "contact"];
+    const pages = document.querySelectorAll(".page");
+    const navLinks = document.querySelectorAll("nav a");
+    const dotsContainer = document.getElementById("dots");
 
-    contactForm.addEventListener("submit", function(event) {
+    let currentPage = 0;
+
+    pageNames.forEach((name, index) => {
+      const dot = document.createElement("button");
+      dot.className = "dot";
+      dot.setAttribute("aria-label", "Go to " + name);
+      dot.addEventListener("click", () => showPage(name));
+      dotsContainer.appendChild(dot);
+    });
+
+    function showPage(pageName) {
+      const index = pageNames.indexOf(pageName);
+      if (index === -1) return;
+
+      currentPage = index;
+
+      pages.forEach(page => {
+        page.classList.toggle("active", page.id === pageName);
+      });
+
+      navLinks.forEach(link => {
+        const isActive = link.dataset.page === pageName;
+        link.classList.toggle("active", isActive);
+
+        if (isActive) {
+          link.setAttribute("aria-current", "page");
+        } else {
+          link.removeAttribute("aria-current");
+        }
+      });
+
+      document.querySelectorAll(".dot").forEach((dot, dotIndex) => {
+        dot.classList.toggle("active", dotIndex === currentPage);
+      });
+
+      history.replaceState(null, "", "#" + pageName);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    navLinks.forEach(link => {
+      link.addEventListener("click", event => {
+        event.preventDefault();
+        showPage(link.dataset.page);
+      });
+    });
+
+    document.getElementById("prevBtn").addEventListener("click", () => {
+      const previousIndex =
+        (currentPage - 1 + pageNames.length) % pageNames.length;
+      showPage(pageNames[previousIndex]);
+    });
+
+    document.getElementById("nextBtn").addEventListener("click", () => {
+      const nextIndex = (currentPage + 1) % pageNames.length;
+      showPage(pageNames[nextIndex]);
+    });
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const initialPage = window.location.hash.replace("#", "");
+      if (pageNames.includes(initialPage)) {
+        showPage(initialPage);
+      } else {
+        showPage("home");
+      }
+    });
+
+    document.getElementById("contactForm").addEventListener("submit", event => {
       event.preventDefault();
 
-      formMessage.textContent =
-        "Thank you for your message! This is a demo form and your message has not been sent.";
-      formMessage.style.color = "#6b8050";
+      document.getElementById("formMessage").textContent =
+        "Thank you! This is a demo form. Your message has not been sent.";
 
-      contactForm.reset();
+      event.target.reset();
     });
   </script>
 
 </body>
 </html>
+
